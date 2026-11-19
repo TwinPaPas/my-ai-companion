@@ -1,0 +1,19 @@
+{
+  "version": "0.1.1",
+  "python": "3.13.13",
+  "platform": "Windows",
+  "status": "PASS",
+  "checks": [
+    "wheel installed without runtime dependencies",
+    "CLI works outside source checkout",
+    "three central roles created",
+    "new process restored selected state",
+    "off persists",
+    "demo runs",
+    "generated Claude exec and Codex host-shell commands run outside checkout",
+    "UTF-8 Korean hook input preserved",
+    "cwd module and PYTHONPATH cannot shadow installed hook",
+    "interpreter path containing spaces works"
+  ],
+  "wheel_sha256": "c5b7389acd0596bc86361caa3d0400c82b548bad9f6082fcf6c2d26456cac294"
+}

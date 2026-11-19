@@ -1,6 +1,8 @@
-# SAI — grow a character in your AI CLI
+# SAI — English quick start
 
-A lover, a female friend, a male friend, or a relationship you describe. Give the character a name, temperament, tastes and boundaries. Care for them, play, disagree, make up, and keep the history when the terminal closes.
+A sweetheart to fall for. A girl best friend or a guy best friend to laugh with. Give them a name and tell them about your day. With a little teasing, a little sulking and a few awkward apologies, ordinary conversations become a story that's yours.
+
+[Full English guide](README.md) · [한국어](README.ko.md)
 
 **Early pilot.** Python 3.11+, no runtime dependencies. A local state engine controls needs, mood, trust and growth; an installed Claude Code or Codex CLI generates dialogue. No avatar required.
 
@@ -24,7 +26,7 @@ Roles: `lover`, `female-friend`, `male-friend`, `custom` (requires `--backstory`
 /sai act tease appearance
 /sai act gift flowers
 /sai act apologize I am sorry for teasing your appearance
-/sai remember "I like blueberry pie"
+/sai remember I like blueberry pie
 /sai status
 /sai off
 /quit

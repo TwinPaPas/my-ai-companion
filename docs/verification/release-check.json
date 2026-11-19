@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "files_checked": 43,
+  "files_checked": 58,
   "scope": "heuristic check of tracked/unignored source; not a guarantee of absence of secrets",
   "findings": []
 }

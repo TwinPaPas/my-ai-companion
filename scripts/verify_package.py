@@ -8,6 +8,7 @@ import platform
 import subprocess
 import sys
 import tempfile
+import tomllib
 import venv
 
 
@@ -16,8 +17,9 @@ def main():
     parser.add_argument("--native-claude", action="store_true", help="Uses existing Claude plan quota for two real hook checks")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    wheel = root / "dist" / "sai_companion-0.1.0-py3-none-any.whl"
-    report = {"python": platform.python_version(), "platform": platform.system(), "status": "RUNNING", "checks": []}
+    version = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
+    wheel = root / "dist" / f"sai_companion-{version}-py3-none-any.whl"
+    report = {"version": version, "python": platform.python_version(), "platform": platform.system(), "status": "RUNNING", "checks": []}
     try:
         report["wheel_sha256"] = hashlib.sha256(wheel.read_bytes()).hexdigest()
         with tempfile.TemporaryDirectory(prefix="sai-package-") as folder:
@@ -35,7 +37,10 @@ def main():
                 if r.returncode:
                     raise RuntimeError("installed CLI failed: " + r.stderr[-500:])
                 return json.loads(r.stdout)
-            assert run("demo")["kind"] == "scripted-demo"
+            demonstration = run("demo")
+            assert demonstration["kind"] == "scripted-demo"
+            assert demonstration["note"].isascii(), "demo explanation should be English"
+            assert all(row["line"].isascii() for row in demonstration["events"]), "demo dialogue should be English"
             for role in ["lover", "female-friend", "male-friend"]:
                 created = run("create", "하루", "--role", role)
                 assert run("status")["id"] == created["id"]
@@ -94,7 +99,7 @@ def main():
     except Exception as exc:
         report["status"] = "FAIL"
         report["error"] = str(exc)
-    dest = root / "docs" / "verification" / "package.json"
+    dest = root / "docs" / "verification" / f"package-{version}.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False))

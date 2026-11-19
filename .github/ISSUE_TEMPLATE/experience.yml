@@ -1,22 +1,22 @@
-name: 사용 경험 / Experience
-description: 재미있거나 어색했던 캐릭터 반응을 알려 주세요.
+name: Share your experience
+description: Tell us which character moments felt sweet, funny or awkward.
 title: '[Experience] '
 body:
   - type: input
     id: setup
     attributes:
-      label: 관계 · 성격 · 사용 CLI
+      label: Relationship, temperament and CLI
       placeholder: female-friend / blunt / Claude Code
   - type: textarea
     id: moment
     attributes:
-      label: 어떤 순간이었나요?
-      description: 가상의 짧은 재현 대화로 설명해 주세요. 개인 대화, 비밀키, state DB는 첨부하지 마세요.
+      label: What happened?
+      description: Use a short fictional conversation. Do not attach private chats, secret keys or your state database.
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: 기대한 반응과 실제 반응
+      label: What did you expect, and how did the character actually respond?
     validations:
       required: true

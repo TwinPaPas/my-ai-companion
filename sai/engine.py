@@ -54,58 +54,58 @@ def apply_action(state, action, detail="", now=None):
     for key, rate in [("hunger", 3), ("thirst", 4), ("boredom", 2), ("fatigue", 1)]:
         s["needs"][key] = min(100, s["needs"][key] + hours * rate)
     s["updated_at"] = max(now, s["updated_at"])
-    accepted, reason = True, "함께 이야기를 나눴습니다."
+    accepted, reason = True, "You spent some time talking together."
     reward = action != "tease"
     disliked = next((v for v in s["dislikes"] if v.casefold() in detail.casefold()), "")
     boundary = next((v for v in s["boundaries"] if v.casefold() in detail.casefold()), "")
     if action in ("feed", "gift", "play") and disliked:
         accepted, reward = False, False
-        reason = f"{disliked}은/는 취향에 맞지 않아 거절했습니다. 다른 제안을 해 주세요."
+        reason = f"They declined: {disliked} is not their thing. Try offering something else."
     elif action == "tease" and boundary:
         s["irritation"] = min(100, s["irritation"] + 35)
         s["trust"] = max(0, s["trust"] - 7)
         s["concern"] = boundary
-        reason = f"싫다고 정한 {boundary}에 관한 놀림 때문에 마음이 상했습니다."
+        reason = f"Teasing about {boundary} hurt their feelings; they had set a boundary about it."
     elif action == "tease":
         reward = False
-        reason = "장난을 받았습니다. 성격과 현재 기분에 맞게 받아치거나 선을 그을 수 있습니다."
+        reason = "They noticed the teasing and may tease back or draw a line, depending on their personality and mood."
     elif action == "apologize":
         if s["concern"] and s["concern"].casefold() in detail.casefold():
             s["irritation"] = max(0, s["irritation"] - 25)
             s["trust"] = min(100, s["trust"] + 3)
-            reason = f"{s['concern']}에 대한 사과를 들었습니다. 마음이 조금 풀렸습니다."
+            reason = f"Your apology acknowledged {s['concern']}. They are starting to soften."
             if s["irritation"] == 0:
                 s["concern"] = ""
-                reason = "이유를 짚은 사과를 받아들이고 화해했습니다."
+                reason = "They accepted the apology that addressed what hurt. You have made up."
         elif s["concern"]:
             accepted, reward = False, False
-            reason = f"아직 {s['concern']} 때문에 속상합니다. 그 일을 짚어 주었으면 합니다."
+            reason = f"They are still upset about {s['concern']} and want that concern acknowledged."
         else:
             reward = False
-            reason = "현재 풀어야 할 갈등은 없습니다."
+            reason = "There is no unresolved disagreement right now."
     elif action == "play" and (s["irritation"] >= 60 or s["needs"]["fatigue"] >= 85):
         accepted, reward = False, False
-        reason = "지금은 놀 기분이 아닙니다. 먼저 쉬거나 마음 상한 이유를 이야기해 주세요."
+        reason = "They are not in the mood to play. Try some rest or talk about what upset them."
     elif action == "feed":
         s["needs"]["hunger"] = max(0, s["needs"]["hunger"] - 35)
-        reason = f"{detail or '식사'}을/를 챙겨 주었습니다."
+        reason = f"You brought them {detail or 'a meal'}."
     elif action == "water":
         s["needs"]["thirst"] = max(0, s["needs"]["thirst"] - 45)
-        reason = "물을 챙겨 주었습니다."
+        reason = "You brought them some water."
     elif action == "play":
         s["needs"]["boredom"] = max(0, s["needs"]["boredom"] - 35)
         s["needs"]["fatigue"] = min(100, s["needs"]["fatigue"] + 8)
-        reason = f"{detail or '작은 놀이'}을/를 함께 했습니다."
+        reason = f"You enjoyed {detail or 'a little game'} together."
     elif action == "rest":
         s["needs"]["fatigue"] = max(0, s["needs"]["fatigue"] - 45)
-        reason = "편히 쉴 시간을 가졌습니다."
+        reason = "They had some time to rest."
     elif action == "gift":
-        reason = f"{detail or '작은 선물'}을/를 받았습니다."
+        reason = f"They received {detail or 'a small gift'}."
         if s["concern"]:
-            reason += f" 선물은 고맙지만 {s['concern']}에 대한 갈등은 그대로입니다."
+            reason += f" They appreciate it, but the disagreement about {s['concern']} is still unresolved."
     elif action == "comfort":
         s["needs"]["boredom"] = max(0, s["needs"]["boredom"] - 10)
-        reason = "마음을 들어 주었습니다. 해결되지 않은 일은 차분히 이야기할 수 있습니다."
+        reason = "You listened to how they feel. There is room to talk calmly about anything unresolved."
     day = datetime.fromtimestamp(now, timezone.utc).date().isoformat()
     if s["reward_day"] != day:
         s["reward_day"], s["rewards_today"] = day, 0

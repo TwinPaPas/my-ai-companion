@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "checks": [
+    "runtime source uses English text",
+    "local links in both READMEs, integration guides, pilot and verification index resolve"
+  ],
+  "errors": []
+}

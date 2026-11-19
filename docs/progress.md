@@ -1,5 +1,14 @@
 # SDD ledger — plan: docs/superpowers/plans/2026-11-19-sai.md
 
+## 2026-11-20 English release and owner feedback
+
+- Owner requested English throughout the public interface, sweeter human copy, feedback-driven positioning and a final working checkout/handoff in `C:\ai_sai`. Owner confirmed no pilot participants exist yet and asked to skip nonessential steps.
+- English main README, CLI/help/demo/action explanations, integration guide and issue forms prepared; Korean guides retained. Mechanics and saved user text were not translated or reset. Existing 53 tests PASS after code changes.
+- Captured real English Claude responses across fresh CLI processes: conflict remained after exit/reopen, flowers preserved concern, apology reduced irritation. Capture PASS; no scripted replies substituted. Rendered a 30.0-second edited playback, verified exact quote excerpts and visually inspected six scenes. Evidence and reproducible authoring scripts are committed; media are release artifacts.
+- Prepared public recruitment for five CLI users and a manual return record. No participant, next-day result or daily monitoring schedule has been invented. No new avatar/web app scope added.
+- Owner's instruction to omit nonessential steps takes precedence over additional process ceremonies. Reuse the existing suite and actual capture; finish with installed-package validation, publication checks and a concise handoff.
+- Validation-script FAIL: the first ad-hoc PowerShell-to-Python language check returned AssertionError after links passed; its non-ASCII regex was passed through the console pipe. Replaced that fragile inline check with the preserved UTF-8 file `scripts/verify_english.py` using Unicode escape ranges. This was a verification invocation issue, not a production-code failure; the first exit 1 is retained here.
+
 - User instructions reviewed twice in design before code; design builder check found no material unanswered question.
 - Pre-flight: Task 2 consumes Store and engine from Task 1; Task 3 consumes Store and build_context from Task 2; signatures aligned.
 - Ruling: execute inline under sleep-time preapproval, with independent design/final reviews — tasks share state APIs; no per-task agent cost.

@@ -68,11 +68,11 @@ def run_chat(store, host, message=None, as_json=False):
         result = convo.turn(message)
         print(json.dumps(result, ensure_ascii=False) if as_json else display_result(result))
         return 0
-    print(f"SAI · {host} / 생성형 대화 · /sai act water · /sai off · /quit")
-    print("자연어는 의도 확인과 대화 생성에 CLI를 호출합니다. 기존 서비스의 사용량이 소모됩니다.")
+    print(f"SAI · {host} / Live chat · /sai act water · /sai off · /quit")
+    print("Natural-language messages call your CLI for intent and dialogue. Your provider's usage applies.")
     while True:
         try:
-            text = input("나 > ").strip()
+            text = input("You > ").strip()
         except (EOFError, KeyboardInterrupt):
             print()
             return 0

@@ -1,0 +1,23 @@
+name: Join the five-user CLI pilot
+description: Volunteer for the small pilot or share your experience after trying it.
+title: '[Pilot] '
+body:
+  - type: input
+    id: setup
+    attributes:
+      label: Your CLI and route
+      placeholder: Claude Code / native hook, or Codex / standalone chat
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: Where are you in the pilot?
+      description: Say whether you are volunteering or have already tried it. Include what felt natural, sweet, dull or awkward. Use fictional examples; no private chats, API keys or state DB.
+    validations:
+      required: true
+  - type: textarea
+    id: return
+    attributes:
+      label: If you used it again, what brought you back?
+      description: Optional. Tell us when you returned, whether you received a reminder, and what you wanted to do. Leaving this blank is fine.

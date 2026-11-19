@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "duration_seconds": 30.0,
+  "size": [
+    1600,
+    900
+  ],
+  "format": "Edited terminal-style playback, not a real-time screen capture",
+  "capture": "showcase-0.1.1.json",
+  "artifacts": [
+    {
+      "file": "sai-0.1.1-showcase.mp4",
+      "sha256": "915ea59755e4cdc29fb39a2f834994a328346c7ed1889ad6b8d45cfe0d294cd4",
+      "bytes": 190871
+    },
+    {
+      "file": "sai-0.1.1-showcase.gif",
+      "sha256": "c1e28d1b19dffb5c60d20dbfa77b89e589ead41136286e1ee427bf74fc5b0663",
+      "bytes": 313969
+    },
+    {
+      "file": "sai-0.1.1-showcase-poster.png",
+      "sha256": "531e36884645794b6ed05f2c4d9abdb37ee58182b7bd803d2fff44071ce58688",
+      "bytes": 188155
+    }
+  ],
+  "excerpts": [
+    {
+      "scene": "01 / A joke goes too far",
+      "displayed_reply": "I told you my appearance is off-limits, so no, that wasn't funny ...",
+      "source_reply": "*crosses arms* I told you my appearance is off-limits, so no, that wasn't funny, and I'm not laughing it off."
+    },
+    {
+      "scene": "03 / The story is still there",
+      "displayed_reply": "You teased me about my looks after I told you that's off-limits ...",
+      "source_reply": "*looks away* You teased me about my looks after I told you that's off-limits, and I'm still annoyed about it."
+    },
+    {
+      "scene": "04 / Flowers are not a reset",
+      "displayed_reply": "They're lovely, thanks, but flowers don't cancel out you teasing my looks\n...",
+      "source_reply": "*takes the flowers and sets them on the table* They're lovely, thanks, but flowers don't cancel out you teasing my looks after I told you that was off-limits."
+    },
+    {
+      "scene": "05 / A little closer",
+      "displayed_reply": "Thanks for actually owning the appearance thing, that means more than the\nflowers did ...",
+      "source_reply": "*uncrosses arms a little* Thanks for actually owning the appearance thing, that means more than the flowers did, but I'm still a little sore about it."
+    }
+  ]
+}

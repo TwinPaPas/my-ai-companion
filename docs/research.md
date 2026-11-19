@@ -18,7 +18,7 @@ These are source-document findings, not installation or performance tests. No so
 | [Replika](https://help.replika.com/hc/en-us/articles/115001070951-What-is-Replika) | Official help: friend, romantic partner, mentor, memories and personality | Relationship selection and growing together are established concepts. |
 
 ## Conclusion
-AI romance, custom characters, CLI companions, care loops, and anger/repair all have precedents. The proposed combination is a product hypothesis, not a novelty claim: a small Korean-first relationship layer for existing AI, with three central relationship modes and observable care/repair across sessions. Whether it is fun or attracts users remains untested.
+AI romance, custom characters, CLI companions, care loops, and anger/repair all have precedents. The proposed combination is a product hypothesis, not a novelty claim: a small relationship layer for the AI people already use, with three central relationship modes and observable care/repair across sessions. Whether it is fun or attracts returning users remains untested. The public interface became English-first in 0.1.1, with Korean documentation retained.
 
 ## Integration references
 - [Codex hooks](https://learn.chatgpt.com/docs/hooks): project/user hooks; trust review; SessionStart and UserPromptSubmit additionalContext.
