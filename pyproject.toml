@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sai-companion"
+version = "0.1.0"
+description = "Raise a character with tastes, moods and memories, inside your AI CLI."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+sai = "sai.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sai*"]
