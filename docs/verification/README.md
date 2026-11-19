@@ -6,6 +6,7 @@
 - [Showcase capture](showcase-0.1.1.json): real English Claude replies. Each CLI command ran in a separate process, and the stored identity/concern survived chat exit. A new generated reply recalled the conflict; flowers did not clear it; an apology reduced irritation.
 - [Render evidence](showcase-render-0.1.1.json): 30-second 1600×900 MP4 plus GIF. This is an **edited terminal-style playback of exact reply excerpts**, not a real-time screen recording. All six scene frames were visually inspected for readability and overflow. The capture retains full replies.
 - [Package check](package-0.1.1.json) records the new wheel's installed CLI checks and digest. Historical checks below remain associated with 0.1.0.
+- [0.1.1 GitHub CI](https://github.com/TwinPaPas/my-ai-companion/actions/runs/44615087827): all Windows/Ubuntu × Python 3.11/3.13 jobs passed for `95748b1`. Published wheel/media digests match their local verification records.
 - Participants have not yet been recruited and next-day use has not been observed. [Pilot protocol](../PILOT.md). The quoted daily-check schedule is unverified.
 
 ## 0.1.0 baseline

@@ -6,7 +6,7 @@ We are inviting five adults who already use Claude Code or Codex CLI to try this
 
 ## Join
 
-Open a [pilot experience issue](https://github.com/TwinPaPas/my-ai-companion/issues/new?template=pilot.yml) with the CLI you already use. Use a nickname and fictional example dialogue. No email address, private conversation or state database is needed. The maintainer can agree on participation there; opening an issue alone is not counted as a completed trial.
+Comment on the [open recruitment post](https://github.com/TwinPaPas/my-ai-companion/issues/1) or open a [pilot experience issue](https://github.com/TwinPaPas/my-ai-companion/issues/new?template=pilot.yml) with the CLI you already use. Use a nickname and fictional example dialogue. No email address, private conversation or state database is needed. The maintainer can agree on participation there; opening an issue alone is not counted as a completed trial.
 
 ## First session
 

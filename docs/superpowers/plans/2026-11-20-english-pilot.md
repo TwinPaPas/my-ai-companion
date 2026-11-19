@@ -21,8 +21,8 @@
 ## Tasks
 
 - [x] Translate README, CLI/help, action explanations and demo; warm Korean/English introduction. Existing 53-test suite passed after code string changes.
-- [ ] Capture real English Claude dialogue across fresh processes using `scripts/capture_showcase.py`; save full stdout/replies, return codes and before/after state checks to `docs/verification/showcase-0.1.1.json`.
-- [ ] Render `dist/sai-0.1.1-showcase.mp4` and preview GIF from that evidence with `scripts/render_showcase.py`; verify 30-second duration and inspect scene frames.
-- [ ] Put native integration status and clip above installation; add `docs/PILOT.md` plus voluntary feedback form and English release notes.
-- [ ] Build and verify 0.1.1 wheel; run full existing suite, link/language checks and independent read-only review. Literal translations do not need mirror-image unit tests.
-- [ ] Merge, publish source/release, check CI and remote artifact hashes; create working checkout at requested path and write handoff with actual completed/pending items.
+- [x] Capture real English Claude dialogue across fresh processes using `scripts/capture_showcase.py`; save full stdout/replies, return codes and before/after state checks to `docs/verification/showcase-0.1.1.json`.
+- [x] Render `dist/sai-0.1.1-showcase.mp4` and preview GIF from that evidence with `scripts/render_showcase.py`; verify 30-second duration and inspect scene frames.
+- [x] Put native integration status and clip above installation; add `docs/PILOT.md` plus voluntary feedback form and English release notes.
+- [x] Build and verify 0.1.1 wheel; existing 53-test suite and link/language checks PASS. Additional independent review omitted under the owner's later instruction to skip nonessential stages; this is explicitly disclosed in HANDOFF.md.
+- [x] Merge, publish source/release, check CI and remote artifact hashes; create working checkout at requested path and write handoff with actual completed/pending items.
