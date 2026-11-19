@@ -1,0 +1,14 @@
+{
+  "python": "3.13.13",
+  "platform": "Windows",
+  "status": "PASS",
+  "checks": [
+    "wheel installed without runtime dependencies",
+    "CLI works outside source checkout",
+    "three central roles created",
+    "new process restored selected state",
+    "off persists",
+    "demo runs"
+  ],
+  "wheel_sha256": "a0f2147481e8e32c69199f941af25fa202b7c0432ac00e50587ef94f4c728c9b"
+}
