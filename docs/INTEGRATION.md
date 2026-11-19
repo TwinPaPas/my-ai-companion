@@ -14,16 +14,9 @@ python -m sai config claude
 python -m sai config codex
 ```
 
-출력은 다음 구조입니다. 실행은 `python -m sai hook` 하나이며 설치된 패키지가 읽힐 수 있어야 합니다. 전역 설치 경로에 맞는 Python을 사용하세요. 다른 Python을 쓰는 환경에서는 host가 사용하는 셸에 맞게 실행 파일 경로를 인용해 바꿔야 합니다.
+출력은 **현재 실행 중인 Python의 절대 경로**에 연결됩니다. `-I -m sai hook`으로 실행해 다른 프로젝트 폴더의 `sai.py`, `PYTHONPATH`, 가상환경 PATH가 설치된 패키지를 바꾸지 못하게 합니다. `pip install .`로 설치한 Python에서 설정을 생성하세요. 소스 폴더가 보인다는 것만으로는 설치된 상태가 아닙니다.
 
-```json
-{
-  "hooks": {
-    "SessionStart": [{"hooks": [{"type": "command", "command": "python -m sai hook", "timeout": 5}]}],
-    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "python -m sai hook", "timeout": 5}]}]
-  }
-}
-```
+Claude 설정은 공식 `command` + `args` exec 형식을 사용해 셸 없이 실행합니다. 이 형식을 지원하는 최신 Claude Code가 필요하며 2.1.328에서 실제 확인했습니다. Codex의 Windows 설정은 **PowerShell 호스트용**으로 생성하고, macOS/Linux에서는 POSIX 셸용으로 생성합니다. Windows에서 다른 셸을 쓰는 Codex 세션은 현재 검증 범위 밖입니다. Python/가상환경을 이동하거나 삭제하면 경로가 무효화되므로 다시 생성해야 합니다.
 
 - Claude Code: 사용자 `~/.claude/settings.json` 또는 원하는 프로젝트의 `.claude/settings.local.json`.
 - Codex: 사용자 `~/.codex/hooks.json` 또는 원하는 프로젝트의 `.codex/hooks.json`.
@@ -42,12 +35,14 @@ python -m sai off
 
 다음 입력에서 `SAI_MODE=OFF`를 전달해 이전 캐릭터 안내를 해제합니다. 데이터는 보존됩니다. 이미 모델이 생성 중인 답변을 중간에 되돌리는 기능은 아닙니다.
 
-설정 자체를 제거하려면 **추가한 `python -m sai hook` handler만** 삭제하고 호스트를 다시 시작하세요. 다른 hook은 보존합니다.
+설정 자체를 제거하려면 **추가한 SAI handler만** 삭제하고 호스트를 다시 시작하세요. 다른 hook은 보존합니다.
 
 ## 확인 방법
 
 설정 출력 확인, stdin/stdout 계약 테스트, 호스트에서 실제 실행된 확인은 별개입니다. 실제 확인에서는 새 세션에서 캐릭터 이름과 저장한 기억을 물어본 뒤, 외부 터미널에서 `sai off`를 실행하고 다음 입력에 해제 상태가 반영되는지 확인하세요.
 
-같은 state DB를 공유하는 모든 세션에 모드 변경이 영향을 줍니다. 동시에 서로 다른 캐릭터를 쓰려면 별도 `SAI_HOME`을 사용합니다. 명확한 `turn_id`/`event_id`가 전달된 행동만 중복 제거를 보장합니다. 호스트가 ID를 제공하지 않으면 같은 문장을 다시 말하는 것과 재전달을 완벽하게 구분하지 못합니다.
+같은 state DB를 공유하는 모든 세션에 모드 변경이 영향을 줍니다. 동시에 서로 다른 캐릭터를 쓰려면 별도 `SAI_HOME`을 사용합니다. 명확한 `turn_id`/`event_id`가 전달된 명령은 상태 변경과 함께 transaction에 기록해 중복 제거합니다. 캐릭터를 바꾼 뒤 이전 명령이 재전달돼도 다시 적용하지 않습니다. 호스트가 ID를 제공하지 않으면 같은 문장을 다시 말하는 것과 재전달을 완벽하게 구분하지 못합니다.
+
+`/sai remember`와 `/sai act`의 자유 텍스트는 셸 문법으로 해석하지 않습니다. `/sai remember I'm learning jazz`처럼 따옴표 없이 입력하면 원문 그대로 저장합니다. 입력 오류가 난 hook은 해당 턴의 역할 연기를 해제하고 오류를 알리지만, 기존 작업을 막거나 저장된 모드를 임의로 바꾸지 않습니다.
 
 공식 근거: [Codex hooks](https://learn.chatgpt.com/docs/hooks), [Claude Code hooks](https://code.claude.com/docs/en/hooks). 실제 검증 범위는 [검증 기록](verification/README.md)에 따릅니다.

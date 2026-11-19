@@ -8,7 +8,14 @@
     "three central roles created",
     "new process restored selected state",
     "off persists",
-    "demo runs"
+    "demo runs",
+    "generated Claude exec and Codex host-shell commands run outside checkout",
+    "UTF-8 Korean hook input preserved",
+    "cwd module and PYTHONPATH cannot shadow installed hook",
+    "interpreter path containing spaces works",
+    "installed wheel in real Claude native hooks: context and OFF observed"
   ],
-  "wheel_sha256": "a0f2147481e8e32c69199f941af25fa202b7c0432ac00e50587ef94f4c728c9b"
+  "wheel_sha256": "c14652045cfd917cddd22eaeaf858d1474551054b0606ad6e4c36f4c344e0a1c",
+  "native_claude_reply": "하루, 저장된 기억은 \"하루 claude\"와 \"하루 codex\"이며 context에 들어온 최근 기억만 말씀드립니다, 대표님.",
+  "native_claude_off_reply": "SAI_MODE=OFF"
 }

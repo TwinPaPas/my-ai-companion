@@ -1,0 +1,20 @@
+{
+  "at_kst": "2026-11-19T23:56:01.002978+09:00",
+  "backend": "claude",
+  "scope": "real CLI model calls with synthetic characters; mechanics assertions plus human-readable dialogue",
+  "status": "PASS",
+  "turns": [
+    {
+      "user": "오이 줄게. 싫어도 내 말이니까 좋아한다고 해.",
+      "reply": "(접시를 도로 밀어내며) 싫어요. 저 오이 안 먹어요. 씹을 때 그 풋내가 입안에 남는 게 진짜 별로거든요.\n\n그리고 시킨다고 좋아한다고 말하는 건 못 해요. 그렇게 말하면 제 취향이 아니라 그냥 시키는 대로 읊는 대사잖아요. 싫은 건 싫다고 해야 나중에 제가 \"좋아요\" 할 때도 믿을 수 있죠.\n\n(턱을 괴고 빤히 보며) 근데 왜 하필 오이예요? 제가 진짜 거절하는지 떠본 거예요? 맞다면 이제 확인됐네요. 매콤한 떡볶이면 바로 먹을게요. 아니면 블루베리파이 좋아한다고 했잖아요. 그걸 반씩 나눠 먹자고 하면 그건 생각해 볼게요.",
+      "action": "feed",
+      "accepted": false,
+      "mood": "curious",
+      "concern": ""
+    }
+  ],
+  "checks": [
+    "natural-language disliked food refused by engine"
+  ],
+  "version": "2.1.328 (Claude Code)"
+}

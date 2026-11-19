@@ -64,7 +64,10 @@ class HookTests(unittest.TestCase):
             config = hook_config(host)
             self.assertEqual(set(config["hooks"]), {"SessionStart", "UserPromptSubmit"})
             for groups in config["hooks"].values():
-                self.assertEqual(groups[0]["hooks"][0]["command"], "python -m sai hook")
+                handler = groups[0]["hooks"][0]
+                self.assertNotEqual(handler["command"], "python -m sai hook")
+                if host == "claude":
+                    self.assertEqual(handler["args"], ["-I", "-m", "sai", "hook"])
         self.assertIsNone(self.store.status())
 
 

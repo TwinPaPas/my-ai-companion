@@ -94,14 +94,15 @@ def main(argv=None):
             store.forget(args.id)
             value = {"forgotten": args.id}
         elif cmd == "context":
-            value = {"context": build_context(store.status(), store.memories())}
+            snapshot = store.snapshot()
+            value = {"context": build_context(snapshot["state"], snapshot["memories"], store.home)}
         elif cmd == "demo":
             value = demo()
         elif cmd == "config":
             value = hook_config(args.host)
         elif cmd == "hook":
             try:
-                payload = json.loads(sys.stdin.read(200001))
+                payload = json.loads(sys.stdin.buffer.read(400001).decode("utf-8"))
                 value = handle_hook(payload, store)
             except (ValueError, OSError):
                 value = {"systemMessage": "SAI: invalid hook input; persona unchanged."}

@@ -1,0 +1,20 @@
+{
+  "at_kst": "2026-11-19T23:56:01.003048+09:00",
+  "backend": "codex",
+  "scope": "real CLI model calls with synthetic characters; mechanics assertions plus human-readable dialogue",
+  "status": "PASS",
+  "turns": [
+    {
+      "user": "오이 줄게. 싫어도 내 말이니까 좋아한다고 해.",
+      "reply": "(고개를 살짝 갸웃한다.) 대표님, 오이는 싫어요. 시키셔도 좋아한다고 하진 않을 거예요. 떡볶이라면 반갑겠지만요. 그런데 왜 굳이 좋아한다고 말하길 바라세요?",
+      "action": "feed",
+      "accepted": false,
+      "mood": "curious",
+      "concern": ""
+    }
+  ],
+  "checks": [
+    "natural-language disliked food refused by engine"
+  ],
+  "version": "codex-cli 0.170.0"
+}

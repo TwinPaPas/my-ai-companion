@@ -47,7 +47,7 @@ class ChatTests(unittest.TestCase):
         self.assertEqual(self.store.status(), before)
 
     def test_failed_dialogue_has_no_fabricated_history(self):
-        model = FixtureModel('{"action":"water","detail":""}', RuntimeError("offline"))
+        model = FixtureModel('{"action":"water","detail":"물"}', RuntimeError("offline"))
         with self.assertRaises(RuntimeError):
             Conversation(self.store, model).turn("물 줄게")
         self.assertEqual(self.store.history(), [])
