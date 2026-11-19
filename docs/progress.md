@@ -8,3 +8,6 @@
 - Baseline: new isolated repository with design/research only, no pre-existing code/tests. Working branch pilot/first-playable, base c86a71a.
 - Task 1 RED: first suite exit 1, missing `sai.engine` and `sai.store` before implementation. First implemented run: 15 tests, 1 ERROR in fixture cleanup (Windows SQLite handle). Root cause: sqlite connection context commits but does not close; changed test fixture to contextlib.closing. Production store already closed in finally. FAIL retained here.
 - Task 1 verification: `python -m unittest discover -s tests -v` exit 0, 15 tests PASS after fixture fix. A combined shell command containing recursive temp cleanup was rejected before execution (`blocked by policy`); no test/commit from that rejected call is counted.
+- Task 1 complete: 202c99a. The known test DB and then its empty temp directory were removed with exact non-recursive paths; exit 0. No trust settings changed.
+- Task 2 RED: command suite had 4 failures and one missing-context-module error, exit 1. CLI source not yet implemented. Fixed one test's unchecked setup so it cannot pass just because creation failed.
+- Task 2 implemented-run FAIL: 27 tests, 1 failure. Hook off command included the disabled character in its result prefix. Removed that prefix when disabled so the next host context contains only the deactivation instruction.
