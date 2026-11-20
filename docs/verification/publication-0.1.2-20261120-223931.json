@@ -1,0 +1,54 @@
+{
+  "at_utc": "2026-11-20T13:39:31.618034+00:00",
+  "status": "PASS",
+  "source_sha": "01b880a5d25f1a5e0b6afa2f2136c96a7ce3ba40",
+  "artifacts": [
+    {
+      "name": "sai_companion-0.1.2-py3-none-any.whl",
+      "sha256": "eb7554e9bed66b59477a10248ade9c8acfb549e423f40e061b2e9489e4d1177b",
+      "bytes": 25974,
+      "public_download": true
+    },
+    {
+      "name": "sai-0.1.2-everyday.mp4",
+      "sha256": "be0ef64f64c323f0ab58233af063a1d5bc23c4ee356181387a44ab6a92167d3d",
+      "bytes": 200344,
+      "public_download": true
+    },
+    {
+      "name": "sai-0.1.2-everyday.gif",
+      "sha256": "5b831f298779501bab0bc4b30b74b72727f318cd664fe484de8a5dd2cb5610fb",
+      "bytes": 326465,
+      "public_download": true
+    },
+    {
+      "name": "sai-0.1.2-everyday-poster.png",
+      "sha256": "53accdac7d2807a91675419539d60b6362b5563e2a1ed72dd6804546a9cbc1f1",
+      "bytes": 168385,
+      "public_download": true
+    }
+  ],
+  "release_url": "https://github.com/TwinPaPas/my-ai-companion/releases/tag/v0.1.2",
+  "ci": {
+    "url": "https://github.com/TwinPaPas/my-ai-companion/actions/runs/44745890783",
+    "jobs": [
+      {
+        "name": "test (ubuntu-latest, 3.13)",
+        "conclusion": "success"
+      },
+      {
+        "name": "test (ubuntu-latest, 3.11)",
+        "conclusion": "success"
+      },
+      {
+        "name": "test (windows-latest, 3.11)",
+        "conclusion": "success"
+      },
+      {
+        "name": "test (windows-latest, 3.13)",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "download_count_note": "These four verification downloads are maintainer activity, not adoption."
+}

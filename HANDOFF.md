@@ -1,4 +1,23 @@
-# SAI handoff — 2026-11-20 (KST)
+# SAI handoff — current release 0.1.2, 2026-11-20 (KST)
+
+## Current status (supersedes the historical section below)
+
+- Work from `C:\ai_sai`. Published pilot: https://github.com/TwinPaPas/my-ai-companion/releases/tag/v0.1.2
+- Release code is `01b880a5d25f1a5e0b6afa2f2136c96a7ce3ba40`. A later evidence-only commit records publication; it does not change runtime code.
+- `python -m sai start` guides CLI selection, new character creation or resuming a saved character, then opens standalone chat. It does not install/login to a model CLI or modify global hooks. Existing state, explicit memories and OFF behavior are preserved.
+- Shared dialogue guidance now targets concise casual replies, avoids repeating an old grievance in unrelated topics, and permits requested detailed work. No automatic truncation, extra model rewrite, schema migration or older-memory retrieval was added.
+- Tests: 65 PASS locally after the independent review fixes. All four Windows/Ubuntu × Python 3.11/3.13 CI jobs passed for the release: https://github.com/TwinPaPas/my-ai-companion/actions/runs/44745890783
+- Installed wheel: guided Unicode setup, OFF/resume and memory preservation worked outside the checkout with a spaced interpreter path. Real Claude native character/memory context and OFF were observed. See `docs/verification/package-0.1.2.json`.
+- Real Claude sample: five casual replies 29–49 words, explicit recall and unchanged concern; requested five-part detail remained available. Codex sample: English replies retained the host's Korean honorific, so the strict English-only check is FAIL; memory/brevity checks passed. Native Codex hook activation is still unverified. Do not flatten these into an all-backends PASS.
+- New 30-second everyday MP4/GIF uses exact recorded prompt/reply excerpts, compressed waits and explicit standalone labelling. All six scenes were visually checked. Previous releases and failed captures remain available.
+- `docs/verification/publication-0.1.2-20261120-223931.json` confirms public access, tag SHA, CI and matching hashes for all four anonymously downloaded assets. Those downloads are maintainer verification, not adoption.
+- An automatic approval review rejected the combined artifact-move/temporary-directory cleanup command before execution with only `blocked by policy`. The tested artifacts and ignored temporary build/cache files remain in the host-managed worktree. No cleanup/move retry was attempted. Verified artifacts are available from the release; the managed worktree was left in place.
+- The prior GitHub performance snapshots remain local in `docs/verification/github-performance-*`; they were not published. There is no new participant/retention observation, external outreach, telemetry or schedule in this release.
+- Implementation decisions, failed attempts and review resolutions: `docs/progress-0.1.2.md`. No unresolved product-code review finding remains; cleanup is blocked as described above.
+
+---
+
+# Historical 0.1.1 handoff — retained for evidence
 
 ## Working location and published state
 
