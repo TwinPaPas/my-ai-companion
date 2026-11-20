@@ -46,4 +46,4 @@ English runtime and retained Korean docs; no runtime dependencies, DB migration,
 - [x] Build wheel and verify isolated installed startup (Unicode/path spaces), state, OFF and hooks; observe real Claude native context/OFF. Keep native Codex activation unverified.
 - [x] Run final suite and entry-document/link checks. Get one fresh whole-branch code review, fix material findings with regression tests, then integrate into C:\ai_sai.
 - [x] Push authorized release code, wait for CI, publish v0.1.2 with wheel and everyday media, verify hashes/public text and retain a concise handoff. Preserve failures.
-- [ ] Clean only task-owned temporary output — BLOCKED before execution by automatic approval review; see docs/progress-0.1.2.md. No cleanup retry was attempted.
+- [ ] Clean only task-owned temporary output — release artifacts are now in `C:\ai_sai\dist` with matching hashes and review records are backed up on E:. Temporary-directory deletion remains BLOCKED before execution by automatic approval review, including the follow-up after the owner's explicit cleanup request; see docs/progress-0.1.2.md.

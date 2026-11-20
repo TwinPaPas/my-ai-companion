@@ -11,9 +11,13 @@
 - Real Claude sample: five casual replies 29–49 words, explicit recall and unchanged concern; requested five-part detail remained available. Codex sample: English replies retained the host's Korean honorific, so the strict English-only check is FAIL; memory/brevity checks passed. Native Codex hook activation is still unverified. Do not flatten these into an all-backends PASS.
 - New 30-second everyday MP4/GIF uses exact recorded prompt/reply excerpts, compressed waits and explicit standalone labelling. All six scenes were visually checked. Previous releases and failed captures remain available.
 - `docs/verification/publication-0.1.2-20261120-223931.json` confirms public access, tag SHA, CI and matching hashes for all four anonymously downloaded assets. Those downloads are maintainer verification, not adoption.
-- An automatic approval review rejected the combined artifact-move/temporary-directory cleanup command before execution with only `blocked by policy`. The tested artifacts and ignored temporary build/cache files remain in the host-managed worktree. No cleanup/move retry was attempted. Verified artifacts are available from the release; the managed worktree was left in place.
+- After the owner's explicit final-cleanup request, all four v0.1.2 deliverables were moved to `C:\ai_sai\dist`; their hashes match the published verification record, and the worktree copies are absent. The previous v0.1.1 deliverables remain intact.
+- Temporary-directory cleanup remains BLOCKED: automatic approval review rejected both the original combined command and the later deletion-only command before execution with only `blocked by policy`. No alternate-tool deletion was attempted. Task-owned `build`, `sai_companion.egg-info`, `sai\__pycache__` and `.superpowers\sdd\2026-11-20-easier-start` remain in `C:\Users\Zion_21\.codex\worktrees\dc42\ai_sai`. The managed worktree remains host-owned.
+- The pre-cleanup Git history is verified in `E:\blueurban_backup\sai-0.1.2-20261120\before-final-cleanup.bundle`. Four review records were preserved in that directory's `review-records` folder and SHA-256 compared before the blocked deletion.
 - The prior GitHub performance snapshots remain local in `docs/verification/github-performance-*`; they were not published. There is no new participant/retention observation, external outreach, telemetry or schedule in this release.
 - Implementation decisions, failed attempts and review resolutions: `docs/progress-0.1.2.md`. No unresolved product-code review finding remains; cleanup is blocked as described above.
+
+Current next-session instruction: Read `C:\ai_sai\HANDOFF.md` and follow the owner's next concrete request. Reuse the recorded release checks where source is unchanged; preserve local performance evidence. Native Codex hooks and user adoption remain unverified. Do not bypass the cleanup policy block or change host trust settings.
 
 ---
 
