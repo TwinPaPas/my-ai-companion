@@ -1,0 +1,79 @@
+Historical successful commands, 2026-11-20 KST.
+These are execution evidence, not a scheduled cleanup or a request to rerun.
+Both commands used the existing PowerShell exec tool with tty=true.
+No -Recurse, -Force, policy/config edits, alternate tool, or encoded command was used for the deletions below.
+
+Command 1: exit 0; one 241-byte bytecode file absent after deletion.
+
+$ErrorActionPreference='Stop'
+$cacheFile='C:\Users\Zion_21\.codex\worktrees\dc42\ai_sai\sai\__pycache__\__main__.cpython-313.pyc'
+$cacheItem=Get-Item -LiteralPath $cacheFile
+if($cacheItem.PSIsContainer -or ($cacheItem.Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'Expected an ordinary cache file'}
+if((Get-FileHash -LiteralPath $cacheFile).Hash -ne '197D147BA953CD7C9FC74FEFA54728FD7DA624A8249AE078701A7BC20A1427EC'){throw 'Cache content changed'}
+Remove-Item -LiteralPath $cacheFile -ErrorAction Stop
+[pscustomobject]@{File=$cacheFile;Absent= -not(Test-Path -LiteralPath $cacheFile)} | ConvertTo-Json -Compress
+
+Command 2: exit 0; 27 files / 281675 bytes deleted.
+
+$ErrorActionPreference='Stop'
+$cleanupRoot='C:\Users\Zion_21\.codex\worktrees\dc42\ai_sai'
+$reviewBackup='E:\blueurban_backup\sai-0.1.2-20261120\review-records'
+$exactFiles=[ordered]@{
+'build\lib\sai\backends.py'=4296
+'build\lib\sai\chat.py'=5789
+'build\lib\sai\cli.py'=6793
+'build\lib\sai\context.py'=4006
+'build\lib\sai\demo.py'=1790
+'build\lib\sai\engine.py'=6675
+'build\lib\sai\hooks.py'=5128
+'build\lib\sai\onboarding.py'=4127
+'build\lib\sai\store.py'=10920
+'build\lib\sai\__init__.py'=82
+'build\lib\sai\__main__.py'=48
+'sai_companion.egg-info\dependency_links.txt'=1
+'sai_companion.egg-info\entry_points.txt'=37
+'sai_companion.egg-info\PKG-INFO'=9630
+'sai_companion.egg-info\SOURCES.txt'=571
+'sai_companion.egg-info\top_level.txt'=4
+'sai\__pycache__\cli.cpython-313.pyc'=10410
+'sai\__pycache__\context.cpython-313.pyc'=4675
+'sai\__pycache__\demo.cpython-313.pyc'=1991
+'sai\__pycache__\engine.cpython-313.pyc'=9370
+'sai\__pycache__\hooks.cpython-313.pyc'=6735
+'sai\__pycache__\store.cpython-313.pyc'=16598
+'sai\__pycache__\__init__.cpython-313.pyc'=254
+'.superpowers\sdd\2026-11-20-easier-start\plan-path'=50
+'.superpowers\sdd\2026-11-20-easier-start\review-5d7b033..6852d8f.diff'=169934
+'.superpowers\sdd\2026-11-20-easier-start\task-1-brief.md'=793
+'.superpowers\sdd\2026-11-20-easier-start\task-2-brief.md'=968
+}
+$verifiedFiles=@(foreach($relative in $exactFiles.Keys){
+$fullPath=Join-Path $cleanupRoot $relative
+$item=Get-Item -LiteralPath $fullPath -Force
+if($item.PSIsContainer -or $item.FullName -ne $fullPath -or $item.Length -ne $exactFiles[$relative]){throw "Inventory changed: $relative"}
+$node=$item
+while($node.FullName -ne $cleanupRoot){
+if(($node.Attributes -band [IO.FileAttributes]::ReparsePoint) -or -not $node.FullName.StartsWith($cleanupRoot+'\',[StringComparison]::OrdinalIgnoreCase)){throw "Unsafe path: $relative"}
+if($node -is [IO.DirectoryInfo]){$node=$node.Parent}else{$node=$node.Directory}
+if($null -eq $node){throw 'Expected workspace ancestor'}
+}
+if($node.Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Workspace is a reparse point'}
+$hash=(Get-FileHash -LiteralPath $fullPath).Hash
+if($relative.StartsWith('build\lib\sai\')){
+$original=Join-Path (Join-Path $cleanupRoot 'sai') $item.Name
+if($hash -ne (Get-FileHash -LiteralPath $original).Hash){throw "Build file differs from retained source: $relative"}
+}
+if($relative.StartsWith('.superpowers\')){
+$preserved=Join-Path $reviewBackup $item.Name
+if($hash -ne (Get-FileHash -LiteralPath $preserved).Hash){throw "Review backup mismatch: $relative"}
+}
+[pscustomobject]@{Path=$fullPath;Hash=$hash;Bytes=$item.Length}
+})
+foreach($file in $verifiedFiles){
+if((Get-FileHash -LiteralPath $file.Path).Hash -ne $file.Hash){throw "File changed before removal: $($file.Path)"}
+Remove-Item -LiteralPath $file.Path -ErrorAction Stop
+if(Test-Path -LiteralPath $file.Path){throw "Removal incomplete: $($file.Path)"}
+}
+[pscustomobject]@{DeletedFiles=$verifiedFiles.Count;DeletedBytes=($verifiedFiles | Measure-Object -Property Bytes -Sum).Sum;RecursiveDeletionUsed=$false} | ConvertTo-Json -Compress
+
+Final read-only inventory: zero files in all four original task directories. Directory-removal commands were rejected before execution; nine directory entries remain. Release artifacts and tracked source were retained.
