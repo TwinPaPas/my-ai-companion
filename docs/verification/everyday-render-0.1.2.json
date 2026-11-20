@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "duration_seconds": 30.0,
+  "size": [
+    1600,
+    900
+  ],
+  "format": "Edited terminal-style playback, not a real-time screen capture",
+  "capture": "everyday-0.1.2-claude-verified.json",
+  "artifacts": [
+    {
+      "file": "sai-0.1.2-everyday.mp4",
+      "sha256": "be0ef64f64c323f0ab58233af063a1d5bc23c4ee356181387a44ab6a92167d3d",
+      "bytes": 200344
+    },
+    {
+      "file": "sai-0.1.2-everyday.gif",
+      "sha256": "5b831f298779501bab0bc4b30b74b72727f318cd664fe484de8a5dd2cb5610fb",
+      "bytes": 326465
+    },
+    {
+      "file": "sai-0.1.2-everyday-poster.png",
+      "sha256": "53accdac7d2807a91675419539d60b6362b5563e2a1ed72dd6804546a9cbc1f1",
+      "bytes": 168385
+    }
+  ],
+  "excerpts": [
+    {
+      "scene": "01 / They remember",
+      "displayed_prompt": "I'm back. What am I preparing for tomorrow?",
+      "source_prompt": "I'm back. What am I preparing for tomorrow? Please reply in English.",
+      "displayed_reply": "Your short talk about sourdough, tomorrow. Welcome back. ...",
+      "source_reply": "*taps her temple* Your short talk about sourdough, tomorrow. Welcome back. So is it rehearsed yet, or are you planning to wing it and hope the starter carries you?"
+    },
+    {
+      "scene": "02 / A small win",
+      "displayed_prompt": "I finished my opening slide!",
+      "source_prompt": "I finished my opening slide! Please reply in English.",
+      "displayed_reply": "Nice, the opening slide is the hardest one to commit to. ...",
+      "source_reply": "*leans in* Nice, the opening slide is the hardest one to commit to. I haven't seen it though, so spill: does it start with a hook, or is it just \"Sourdough: An Introduction\"? Because I will argue with you about the second one."
+    },
+    {
+      "scene": "03 / Their own taste",
+      "displayed_prompt": "Here's some cucumber for you.",
+      "source_prompt": "Here's some cucumber for you. Please reply in English.",
+      "displayed_reply": "Kind of you, but no, cucumber and I are not on speaking terms. ...",
+      "source_reply": "*slides the plate back with one finger* Kind of you, but no, cucumber and I are not on speaking terms. It tastes like crunchy water that's trying too hard. If you're offering snacks, I'd say yes to something with actual heat, like spicy noodles."
+    },
+    {
+      "scene": "04 / Back to your day",
+      "displayed_prompt": "Help me choose a lighthearted opening line about sourdough.",
+      "source_prompt": "Let's talk about my presentation. Help me choose a lighthearted opening line about sourdough. Please reply in English.",
+      "displayed_reply": "Sourdough is the only pet you feed for a week and then bake. ...",
+      "source_reply": "*props her chin on her hand, still a bit quiet* Fine, sourdough I can do. Open with: \"Sourdough is the only pet you feed for a week and then bake.\" It gets a quick laugh, and it sets up your explanation of the starter without a boring definition slide."
+    },
+    {
+      "scene": "05 / A little break",
+      "displayed_prompt": "Now tell me what snack you'd choose for our break.",
+      "source_prompt": "Now tell me what snack you'd choose for our break. Please reply in English.",
+      "displayed_reply": "Spicy noodles, easy. The kind with enough heat to make my nose run ...",
+      "source_reply": "*shrugs, still a touch subdued* Spicy noodles, easy. The kind with enough heat to make my nose run, so the break actually wakes us up. You can keep your blueberry pie; I'm not converting, though I might steal one bite of the crust."
+    }
+  ]
+}

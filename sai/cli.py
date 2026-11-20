@@ -9,6 +9,7 @@ from .demo import demo
 from .engine import ACTIONS, ROLES, TEMPERAMENTS
 from .hooks import handle_hook, hook_config
 from .store import Store
+from . import __version__
 
 ROLE_NAMES = {"lover": "Sweetheart", "female-friend": "Girl best friend", "male-friend": "Guy best friend", "custom": "Custom relationship"}
 MOOD_NAMES = {"curious": "Getting to know you", "comfortable": "At ease", "sulking": "Sulking", "angry": "Angry", "tired": "Tired"}
@@ -18,7 +19,7 @@ def parser():
     p = argparse.ArgumentParser(prog="sai", description="SAI — your own AI companion, with tastes and a story to grow together")
     p.add_argument("--home", help="State directory (default: ~/.sai or SAI_HOME)")
     p.add_argument("--json", action="store_true", help="Print machine-readable JSON")
-    p.add_argument("--version", action="version", version="sai 0.1.1")
+    p.add_argument("--version", action="version", version=f"sai {__version__}")
     sub = p.add_subparsers(dest="command", required=True)
     c = sub.add_parser("create", help="Create a character and start your story")
     c.add_argument("name")
@@ -39,6 +40,7 @@ def parser():
     sub.add_parser("remember", help="Save a memory").add_argument("text")
     sub.add_parser("forget", help="Remove one saved memory").add_argument("id")
     sub.add_parser("config", help="Print hook configuration without installing it").add_argument("host", choices=["codex", "claude"])
+    sub.add_parser("start", help="Guided setup or resume, then live chat").add_argument("--backend", choices=["codex", "claude"])
     chat = sub.add_parser("chat", help="Chat using an installed AI CLI")
     chat.add_argument("--backend", choices=["codex", "claude"], required=True)
     chat.add_argument("--message", help="Send one message and exit")
@@ -79,7 +81,12 @@ def main(argv=None):
     store = Store(args.home)
     try:
         cmd = args.command
-        if cmd == "create":
+        if cmd == "start":
+            if args.json:
+                raise ValueError("start is interactive; use create/use and chat --message with --json instead.")
+            from .onboarding import start
+            return start(store, args.backend)
+        elif cmd == "create":
             value = store.create(args.name, args.role, args.temperament, likes=args.like,
                                  dislikes=args.dislike, boundaries=args.boundary, backstory=args.backstory)
         elif cmd in ("status", "list", "off", "memories"):

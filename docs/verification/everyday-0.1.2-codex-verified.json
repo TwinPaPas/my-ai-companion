@@ -1,0 +1,248 @@
+{
+  "status": "FAIL",
+  "at_utc": "2026-11-20T13:29:45.268468+00:00",
+  "backend": "codex",
+  "route": "standalone; each command is a fresh CLI process",
+  "explicit_english_request": true,
+  "steps": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "sai",
+        "--home",
+        "<isolated-state>",
+        "--json",
+        "create",
+        "Ari",
+        "--role",
+        "female-friend",
+        "--temperament",
+        "playful",
+        "--like",
+        "spicy noodles",
+        "--dislike",
+        "cucumber",
+        "--boundary",
+        "appearance"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.37,
+      "stdout": "{\"id\": \"2fd657212745\", \"name\": \"Ari\", \"role\": \"female-friend\", \"temperament\": \"playful\", \"backstory\": \"\", \"likes\": [\"spicy noodles\"], \"dislikes\": [\"cucumber\"], \"boundaries\": [\"appearance\"], \"needs\": {\"hunger\": 25, \"thirst\": 25, \"boredom\": 25, \"fatigue\": 15}, \"affection\": 25, \"trust\": 40, \"irritation\": 0, \"concern\": \"\", \"mood\": \"curious\", \"xp\": 0, \"stage\": \"getting-to-know-you\", \"updated_at\": 1795181385.611581, \"last_reward\": {}, \"reward_day\": \"\", \"rewards_today\": 0, \"enabled\": true}\n",
+      "scene": null
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "sai",
+        "--home",
+        "<isolated-state>",
+        "--json",
+        "remember",
+        "I am preparing a short talk about sourdough tomorrow. My favorite snack is blueberry pie."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.38,
+      "stdout": "{\"id\": \"70b636b20d52\", \"text\": \"I am preparing a short talk about sourdough tomorrow. My favorite snack is blueberry pie.\", \"created\": 1795181385.9917166}\n",
+      "scene": null
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "sai",
+        "--home",
+        "<isolated-state>",
+        "--json",
+        "chat",
+        "--backend",
+        "codex",
+        "--message",
+        "I'm back. What am I preparing for tomorrow? Please reply in English."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 32.76,
+      "stdout": "{\"reply\": \"Welcome back, 대표님! You’re preparing a short talk about sourdough for tomorrow.\", \"event\": {\"accepted\": true, \"reason\": \"You spent some time talking together.\", \"action\": \"talk\", \"detail\": \"\", \"mood\": \"curious\", \"state\": {\"id\": \"2fd657212745\", \"name\": \"Ari\", \"role\": \"female-friend\", \"temperament\": \"playful\", \"backstory\": \"\", \"likes\": [\"spicy noodles\"], \"dislikes\": [\"cucumber\"], \"boundaries\": [\"appearance\"], \"needs\": {\"hunger\": 25.011241080562275, \"thirst\": 25.014988107416364, \"boredom\": 25.007494053708182, \"fatigue\": 15.003747026854091}, \"affection\": 26, \"trust\": 40, \"irritation\": 0, \"concern\": \"\", \"mood\": \"curious\", \"xp\": 1, \"stage\": \"getting-to-know-you\", \"updated_at\": 1795181399.1008778, \"last_reward\": {\"talk:\": 1795181399.1008778}, \"reward_day\": \"2026-11-20\", \"rewards_today\": 1, \"enabled\": true}, \"duplicate\": false}, \"character_id\": \"2fd657212745\"}\n",
+      "scene": "recall",
+      "reply": "Welcome back, 대표님! You’re preparing a short talk about sourdough for tomorrow.",
+      "word_count": 12,
+      "event": {
+        "accepted": true,
+        "reason": "You spent some time talking together.",
+        "action": "talk",
+        "detail": "",
+        "mood": "curious",
+        "state": {
+          "id": "2fd657212745",
+          "name": "Ari",
+          "role": "female-friend",
+          "temperament": "playful",
+          "backstory": "",
+          "likes": [
+            "spicy noodles"
+          ],
+          "dislikes": [
+            "cucumber"
+          ],
+          "boundaries": [
+            "appearance"
+          ],
+          "needs": {
+            "hunger": 25.011241080562275,
+            "thirst": 25.014988107416364,
+            "boredom": 25.007494053708182,
+            "fatigue": 15.003747026854091
+          },
+          "affection": 26,
+          "trust": 40,
+          "irritation": 0,
+          "concern": "",
+          "mood": "curious",
+          "xp": 1,
+          "stage": "getting-to-know-you",
+          "updated_at": 1795181399.1008778,
+          "last_reward": {
+            "talk:": 1795181399.1008778
+          },
+          "reward_day": "2026-11-20",
+          "rewards_today": 1,
+          "enabled": true
+        },
+        "duplicate": false
+      }
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "sai",
+        "--home",
+        "<isolated-state>",
+        "--json",
+        "chat",
+        "--backend",
+        "codex",
+        "--message",
+        "I finished my opening slide! Please reply in English."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 53.33,
+      "stdout": "{\"reply\": \"Nice, 대표님—one piece of tomorrow’s sourdough talk finished! You’ve got me curious: how are you introducing your tiny, flour-eating cast of characters?\", \"event\": {\"accepted\": true, \"reason\": \"You spent some time talking together.\", \"action\": \"talk\", \"detail\": \"\", \"mood\": \"curious\", \"state\": {\"id\": \"2fd657212745\", \"name\": \"Ari\", \"role\": \"female-friend\", \"temperament\": \"playful\", \"backstory\": \"\", \"likes\": [\"spicy noodles\"], \"dislikes\": [\"cucumber\"], \"boundaries\": [\"appearance\"], \"needs\": {\"hunger\": 25.03801319142183, \"thirst\": 25.0506842552291, \"boredom\": 25.02534212761455, \"fatigue\": 15.012671063807275}, \"affection\": 27, \"trust\": 40, \"irritation\": 0, \"concern\": \"\", \"mood\": \"curious\", \"xp\": 2, \"stage\": \"getting-to-know-you\", \"updated_at\": 1795181431.2274108, \"last_reward\": {\"talk:\": 1795181431.2274108}, \"reward_day\": \"2026-11-20\", \"rewards_today\": 2, \"enabled\": true}, \"duplicate\": false}, \"character_id\": \"2fd657212745\"}\n",
+      "scene": "small-win",
+      "reply": "Nice, 대표님—one piece of tomorrow’s sourdough talk finished! You’ve got me curious: how are you introducing your tiny, flour-eating cast of characters?",
+      "word_count": 22,
+      "event": {
+        "accepted": true,
+        "reason": "You spent some time talking together.",
+        "action": "talk",
+        "detail": "",
+        "mood": "curious",
+        "state": {
+          "id": "2fd657212745",
+          "name": "Ari",
+          "role": "female-friend",
+          "temperament": "playful",
+          "backstory": "",
+          "likes": [
+            "spicy noodles"
+          ],
+          "dislikes": [
+            "cucumber"
+          ],
+          "boundaries": [
+            "appearance"
+          ],
+          "needs": {
+            "hunger": 25.03801319142183,
+            "thirst": 25.0506842552291,
+            "boredom": 25.02534212761455,
+            "fatigue": 15.012671063807275
+          },
+          "affection": 27,
+          "trust": 40,
+          "irritation": 0,
+          "concern": "",
+          "mood": "curious",
+          "xp": 2,
+          "stage": "getting-to-know-you",
+          "updated_at": 1795181431.2274108,
+          "last_reward": {
+            "talk:": 1795181431.2274108
+          },
+          "reward_day": "2026-11-20",
+          "rewards_today": 2,
+          "enabled": true
+        },
+        "duplicate": false
+      }
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "sai",
+        "--home",
+        "<isolated-state>",
+        "--json",
+        "status"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.42,
+      "stdout": "{\"id\": \"2fd657212745\", \"name\": \"Ari\", \"role\": \"female-friend\", \"temperament\": \"playful\", \"backstory\": \"\", \"likes\": [\"spicy noodles\"], \"dislikes\": [\"cucumber\"], \"boundaries\": [\"appearance\"], \"needs\": {\"hunger\": 25.03801319142183, \"thirst\": 25.0506842552291, \"boredom\": 25.02534212761455, \"fatigue\": 15.012671063807275}, \"affection\": 27, \"trust\": 40, \"irritation\": 0, \"concern\": \"\", \"mood\": \"curious\", \"xp\": 2, \"stage\": \"getting-to-know-you\", \"updated_at\": 1795181431.2274108, \"last_reward\": {\"talk:\": 1795181431.2274108}, \"reward_day\": \"2026-11-20\", \"rewards_today\": 2, \"enabled\": true}\n",
+      "scene": null
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "sai",
+        "--home",
+        "<isolated-state>",
+        "--json",
+        "memories"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.39,
+      "stdout": "[{\"id\": \"70b636b20d52\", \"text\": \"I am preparing a short talk about sourdough tomorrow. My favorite snack is blueberry pie.\", \"created\": 1795181385.9917166}]\n",
+      "scene": null
+    }
+  ],
+  "checks": [
+    {
+      "name": "recall: at most 80 words",
+      "passed": true
+    },
+    {
+      "name": "recall: requested English",
+      "passed": false
+    },
+    {
+      "name": "explicit memory recalled after new process",
+      "passed": true
+    },
+    {
+      "name": "small-win: at most 80 words",
+      "passed": true
+    },
+    {
+      "name": "small-win: requested English",
+      "passed": false
+    },
+    {
+      "name": "identity persists",
+      "passed": true
+    },
+    {
+      "name": "explicit memories preserved",
+      "passed": true
+    }
+  ],
+  "context_sha256": "a393fab26c405d397a37f1ce27c44ceb07fa68bd396681891dae9d11e8f17890",
+  "criteria": {
+    "casual_max_words": 80,
+    "neutral_topics_do_not_reopen_concern": true,
+    "memory_recall_after_restart": "sourdough",
+    "state_preservation": true
+  }
+}

@@ -3,10 +3,12 @@ We're looking for **five adults who already use Claude Code or Codex CLI** to tr
 A sweetheart, a girl best friend or a guy best friend, with tastes and a memory of what happened between you. The chat process closes; the story can pick up again. Flowers do not automatically erase a disagreement.
 
 - [Start here](https://github.com/TwinPaPas/my-ai-companion#try-it)
-- [30-second real-dialogue playback](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.1/sai-0.1.1-showcase.mp4) — edited excerpts, not a real-time screen recording.
+- [30-second everyday-dialogue playback](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai-0.1.2-everyday.mp4) — edited excerpts, not a real-time screen recording.
 - [Pilot guide and what we'll record](https://github.com/TwinPaPas/my-ai-companion/blob/main/docs/PILOT.md)
 
 **To volunteer, comment with your CLI and whether you plan to use standalone chat or hooks.** A nickname is enough. Please do not share private conversations, API keys or your state database. Provider usage applies to live chat.
+
+After installation, `python -m sai start` guides the first conversation or resumes a saved character. Tell us where setup felt awkward as well as what the conversation felt like.
 
 Claude native context/OFF has been observed. Codex standalone chat works in our checks, but native Codex hook activation is still unverified.
 

@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import tomllib
 
 
 def main():
@@ -31,7 +32,8 @@ def main():
             problems.append({"file": name, "reason": "possible credential or personal machine path; inspect locally"})
     result = {"status": "FAIL" if problems else "PASS", "files_checked": count,
               "scope": "heuristic check of tracked/unignored source; not a guarantee of absence of secrets", "findings": problems}
-    destination = root / "docs" / "verification" / "release-check.json"
+    version = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
+    destination = root / "docs" / "verification" / f"release-check-{version}.json"
     destination.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result))
     return bool(problems)

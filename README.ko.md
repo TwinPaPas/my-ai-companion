@@ -22,14 +22,18 @@
 
 ## 먼저 해 보기
 
-Python 3.11 이상:
+Python 3.11 이상과 설치·로그인된 Claude Code 또는 Codex CLI:
 
 ```console
-git clone https://github.com/TwinPaPas/my-ai-companion.git
-cd my-ai-companion
-python -m pip install .
-python -m sai demo
+python -m pip install "https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai_companion-0.1.2-py3-none-any.whl"
+python -m sai start
 ```
+
+사용할 CLI를 선택하고, 이름·관계·성격·취향을 입력하면 바로 대화가 열립니다. 기존 캐릭터를 고르면 기억을 유지한 채 ON으로 이어갑니다. 설정을 마치기 전 Ctrl+C로 취소하면 기존 상태는 유지됩니다. `start --backend claude` 또는 `start --backend codex`로 CLI를 지정할 수도 있습니다.
+
+CLI 감지는 실행 파일 확인이며 로그인 성공을 뜻하지 않습니다. 로그인과 연결은 첫 실제 답변에서 확인합니다. 호스트 설정은 바꾸지 않습니다. 아직 AI CLI가 없다면 `python -m sai demo`로 아래 예시를 볼 수 있습니다.
+
+0.1.2는 일상 대화를 짧게 하고, 다른 화제로 넘어갔을 때 이전 갈등을 반복해서 꺼내지 않도록 지침을 보강했습니다. 저장된 감정과 기억은 유지되며, 자세한 설명을 요청할 수 있습니다. [새 일상 시연](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai-0.1.2-everyday.mp4)은 실제 Claude 대화의 발췌 편집본입니다.
 
 `demo`는 **작성된 예시 대사 + 실제 상태 엔진**입니다. 모델을 호출하지 않고 사용자 캐릭터를 만들지도 않습니다.
 

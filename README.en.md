@@ -7,14 +7,13 @@ A sweetheart to fall for. A girl best friend or a guy best friend to laugh with.
 **Early pilot.** Python 3.11+, no runtime dependencies. A local state engine controls needs, mood, trust and growth; an installed Claude Code or Codex CLI generates dialogue. No avatar required.
 
 ```sh
-git clone https://github.com/TwinPaPas/my-ai-companion.git
-cd my-ai-companion
-python -m pip install .
-python -m sai demo
-python -m sai create Ari --role male-friend --temperament blunt --like tea --dislike cucumber --boundary appearance
-python -m sai act water
-python -m sai chat --backend claude
+python -m pip install "https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai_companion-0.1.2-py3-none-any.whl"
+python -m sai start
 ```
+
+`start` finds available CLIs, guides character creation or resumes a saved character with memories intact, then opens standalone chat. Login is checked on the first live reply. Use `start --backend claude` or `start --backend codex` to choose directly. Ctrl+C cancels unfinished setup. No AI CLI yet? Try `python -m sai demo` offline.
+
+Casual dialogue now aims for a few concise sentences and follows the current topic without repeatedly bringing up old disagreements. Detailed answers remain available when requested; these are model instructions, not a guarantee or a text truncation limit.
 
 `demo` uses **scripted dialogue and the real engine**, with no model calls or persistent user state. Live chat requires an installed, authenticated CLI. Natural-language chat usually makes two calls (intent + dialogue); explicit `/sai act ...` makes one. Your provider's usage applies. Failures never silently turn into demo replies.
 

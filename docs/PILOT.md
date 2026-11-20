@@ -10,7 +10,7 @@ Comment on the [open recruitment post](https://github.com/TwinPaPas/my-ai-compan
 
 ## First session
 
-1. Install from the README and create a character you would enjoy talking with.
+1. Install from the README and run `python -m sai start` to create a character or resume one. Record any setup difficulty; CLI detection alone does not verify login.
 2. Chat and use a care action during your usual CLI work.
 3. Try a disagreement, close the chat process, reopen it, and see whether the same concern remains. Try a relevant apology.
 4. Leave honest feedback, including anything dull, artificial or irritating. Use SAI afterwards only when you feel like it.

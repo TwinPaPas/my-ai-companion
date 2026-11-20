@@ -13,11 +13,11 @@ Over time, those ordinary conversations become a story that's yours.
 
 ## The terminal closes. Your story stays.
 
-Watch the disagreement survive a fresh CLI process. Flowers do not erase it; an apology changes the next reply.
+They remember tomorrow's presentation, notice a small win, and still have their own taste in snacks. A little company while you get on with your day.
 
-[![30-second edited playback of real Claude dialogue](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.1/sai-0.1.1-showcase.gif)](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.1/sai-0.1.1-showcase.mp4)
+[![30-second edited playback of real Claude dialogue](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai-0.1.2-everyday.gif)](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai-0.1.2-everyday.mp4)
 
-[Watch/download the 30-second MP4](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.1/sai-0.1.1-showcase.mp4) · [Full replies and process evidence](docs/verification/showcase-0.1.1.json)
+[Watch/download the 30-second MP4](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai-0.1.2-everyday.mp4) · [Full replies and process evidence](docs/verification/everyday-0.1.2-claude-verified.json) · [Earlier conflict-and-repair demonstration](https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.1/sai-0.1.1-showcase.mp4)
 
 This is an **edited playback of real generated replies**, with excerpts and waiting time compressed. It uses standalone SAI chat through Claude Code, not a real-time screen recording of native hooks. Each command runs in a fresh process against the same isolated state.
 
@@ -30,14 +30,16 @@ Detailed versions, evidence and limits are in the [verification record](docs/ver
 
 ## Try it
 
-Python 3.11 or later:
+Python 3.11 or later, plus an installed and signed-in Claude Code or Codex CLI:
 
 ```console
-git clone https://github.com/TwinPaPas/my-ai-companion.git
-cd my-ai-companion
-python -m pip install .
-python -m sai demo
+python -m pip install "https://github.com/TwinPaPas/my-ai-companion/releases/download/v0.1.2/sai_companion-0.1.2-py3-none-any.whl"
+python -m sai start
 ```
+
+Choose an available CLI, then create a companion or pick up with a saved one. Press Enter for suggested relationship/temperament choices; names and tastes are yours. Choosing a saved character turns SAI on and preserves their memories. Cancel setup with Ctrl+C before saving.
+
+`start --backend claude` or `start --backend codex` chooses the CLI directly. Detection checks for an executable; login and connection are checked on your first live reply. Setup does not edit your AI CLI settings. No CLI yet? Run `python -m sai demo` for the offline example below.
 
 `demo` uses **scripted dialogue and the actual state engine**. It makes no model calls and does not create a saved character.
 
@@ -55,6 +57,8 @@ Ari > The flowers are lovely. But we still need to talk about earlier.
 These are sample lines. Live dialogue depends on the model and character.
 
 ## Meet your character
+
+Prefer explicit commands or more customization? The original commands remain available:
 
 ```console
 python -m sai create Ari --role female-friend --temperament playful --like "spicy noodles" --dislike cucumber --boundary appearance --backstory "An old friend who loves teasing but knows what she likes."

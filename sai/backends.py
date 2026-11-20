@@ -19,10 +19,19 @@ def resolve_executable(host):
         # a batch shell with interpolated text or rewrite the user's launcher.
         native = path.parent / "node_modules" / "@anthropic-ai" / "claude-code" / "bin" / "claude.exe"
         if host == "claude" and native.is_file():
-            return str(native)
-        raise RuntimeError(f"Set SAI_{host.upper()}_BIN to a native executable (batch launchers are not evaluated).")
+            path = native
+        else:
+            raise RuntimeError(f"Set SAI_{host.upper()}_BIN to a native executable (batch launchers are not evaluated).")
     if not path.is_file():
         raise RuntimeError(f"Configured {host} executable does not exist")
+    if os.name == "nt":
+        import ctypes
+        binary_type = ctypes.c_ulong()
+        executable = bool(ctypes.windll.kernel32.GetBinaryTypeW(str(path.resolve()), ctypes.byref(binary_type))) and binary_type.value in (0, 6)
+    else:
+        executable = os.access(path, os.X_OK)
+    if not executable:
+        raise RuntimeError(f"Configured {host} path is not an executable. Check SAI_{host.upper()}_BIN or your CLI installation.")
     return str(path)
 
 

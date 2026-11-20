@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import re
+import tomllib
 
 
 def main():
@@ -21,7 +22,8 @@ def main():
             errors.append({"file": path.name, "error": "Korean literal remains in runtime source"})
     report = {"status": "FAIL" if errors else "PASS", "checks": ["runtime source uses English text",
               "local links in both READMEs, integration guides, pilot and verification index resolve"], "errors": errors}
-    (root / "docs/verification/english-0.1.1.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    version = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
+    (root / "docs/verification" / f"english-{version}.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report))
     return bool(errors)
 

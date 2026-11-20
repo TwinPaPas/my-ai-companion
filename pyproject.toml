@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sai-companion"
-version = "0.1.1"
+version = "0.1.2"
 description = "Raise a character with tastes, moods and memories, inside your AI CLI."
 readme = "README.md"
 requires-python = ">=3.11"

@@ -32,6 +32,29 @@ def main():
             install = subprocess.run([str(python), "-m", "pip", "install", "--no-deps", str(wheel)], **kwargs)
             if install.returncode:
                 raise RuntimeError("wheel install failed")
+            version_check = subprocess.run([str(python), "-m", "sai", "--version"], **kwargs)
+            assert version_check.returncode == 0 and version_check.stdout.strip() == "sai " + version
+            # Exercise installed guided input and the real chat loop without billing a model.
+            # The executable fixture is used only for discovery; /quit sends no model request.
+            guided = [str(python), "-m", "sai", "--home", str(base / "guided state")]
+            guided_env = dict(os.environ, PYTHONUTF8="1", SAI_CLAUDE_BIN=str(python))
+            opened = subprocess.run(guided + ["start", "--backend", "claude"],
+                                    input="\ud558\ub8e8\n\n\nnoodles\ncucumber\n/quit\n", env=guided_env, **kwargs)
+            assert opened.returncode == 0, "installed guided start failed"
+            state = subprocess.run(guided + ["--json", "status"], **kwargs)
+            created_from_start = json.loads(state.stdout)
+            assert created_from_start["name"] == "\ud558\ub8e8" and created_from_start["dislikes"] == ["cucumber"]
+            memory = subprocess.run(guided + ["remember", "A saved first conversation"], **kwargs)
+            disabled = subprocess.run(guided + ["off"], **kwargs)
+            assert memory.returncode == disabled.returncode == 0
+            resumed = subprocess.run(guided + ["start", "--backend", "claude"], input="\n/quit\n", env=guided_env, **kwargs)
+            state = subprocess.run(guided + ["--json", "status"], **kwargs)
+            restored = json.loads(state.stdout)
+            saved = subprocess.run(guided + ["--json", "memories"], **kwargs)
+            assert resumed.returncode == 0 and restored["id"] == created_from_start["id"] and restored["enabled"]
+            assert json.loads(saved.stdout)[0]["text"] == "A saved first conversation"
+            report["guided_start"] = {"status": "PASS", "scope": "installed stdin/setup/chat loop, executable fixture, no model calls",
+                                      "checks": ["Unicode character created", "OFF character resumed without replacement", "memory retained", "version matches wheel"]}
             def run(*args):
                 r = subprocess.run([str(python), "-m", "sai", "--home", str(base / "state"), "--json", *args], **kwargs)
                 if r.returncode:

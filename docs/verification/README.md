@@ -1,5 +1,15 @@
 # Verification — SAI pilots
 
+## 0.1.2 guided start and everyday dialogue
+
+- Local suite: 65 tests PASS after independent review corrections. Guided start exercises creation, resuming OFF, switching characters, preserved memories, cancellation and invalid executable handling. Source-prompt/reply provenance is checked against the real recording.
+- [Claude everyday capture](everyday-0.1.2-claude-verified.json): five casual replies at 29–49 whitespace-separated words, explicit memory recalled after a fresh process, dislike respected, concern preserved after topic changes, and five requested detailed suggestions still available. Full replies were reviewed for relevant answers. This small sample does not guarantee tone, length or long-term consistency.
+- [Codex sample](everyday-0.1.2-codex-verified.json): **FAIL for the strict English-only check** because the English replies include the host's Korean honorific. Brevity, memory recall and persisted identity checks passed. Native Codex hook activation remains unverified.
+- Earlier [baseline](everyday-0.1.2-claude-baseline.json), [explicit-English baseline](everyday-0.1.2-claude-baseline-english.json) and [first update](everyday-0.1.2-claude-updated.json) FAILs are preserved. The first baseline followed host Korean instructions; its English-only grievance matcher missed Korean references, so those subchecks are not proof of topic handling. Manual review caught the repetitions. The English baseline used the same two prompts as the final capture; replies were 86 and 111 words before the guidance change, versus 29 and 43 in the final sample.
+- [Playback evidence](everyday-render-0.1.2.json): 30 seconds, 1600×900, exact prompt/reply excerpts, compressed waits. Full source commands include an explicit English request; the playback omits that suffix. All six scenes were visually checked. This is standalone playback, not real-time native-hook footage.
+- [Installed wheel](package-0.1.2.json): guided Unicode setup and OFF/resume with memory preservation worked outside the checkout in an interpreter path containing spaces. Guided startup uses an executable fixture and `/quit`, not a fabricated model reply. Separate real Claude native calls observed character/memory context and OFF. Generated hook contracts, UTF-8 input and cwd shadow isolation passed.
+- See [the release ledger](../progress-0.1.2.md) for review findings, fixes and package/publication checks. Existing state/schema and explicit-memory rules are unchanged. There are still no recorded participant or retention results.
+
 ## 0.1.1 English interface and demonstration
 
 - Existing suite: 53 tests passed after presentation-string changes; no state schema or mechanics changes.

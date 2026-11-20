@@ -14,17 +14,19 @@ from PIL import Image, ImageDraw, ImageFont
 import imageio_ffmpeg
 
 
-def main():
+def main(everyday=False):
     parser = argparse.ArgumentParser()
     parser.add_argument("--font", required=True, help="Path to a readable TrueType monospace font")
+    parser.add_argument("--capture", required=everyday, help="Everyday capture JSON, relative to repository root")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    capture = root / "docs/verification/showcase-0.1.1.json"
+    capture = root / (args.capture if everyday and args.capture else "docs/verification/showcase-0.1.1.json")
+    version = "0.1.2" if everyday else "0.1.1"
     record = json.loads(capture.read_text(encoding="utf-8"))
     if record["status"] != "PASS":
         raise ValueError("Refusing to render a failed or incomplete recording")
     replies = [s for s in record["steps"] if "reply" in s]
-    if len(replies) != 4:
+    if not everyday and len(replies) != 4:
         raise ValueError("Expected conflict, recall, gift and apology replies")
     # Exact excerpts from this capture; refuse to reuse them for different replies.
     quotes = [
@@ -33,7 +35,7 @@ def main():
         "They're lovely, thanks, but flowers don't cancel out you teasing my looks",
         "Thanks for actually owning the appearance thing, that means more than the flowers did",
     ]
-    for entry, quote in zip(replies, quotes):
+    for entry, quote in ([] if everyday else zip(replies, quotes)):
         if quote not in " ".join(entry["reply"].split()):
             raise ValueError("An editorial excerpt no longer matches its recorded source")
         entry["excerpt"] = quote + " ..."
@@ -41,7 +43,7 @@ def main():
     small, body, heading, title = font(22), font(30), font(40), font(56)
     background, panel, white, muted = "#11141c", "#1b2030", "#eef0f5", "#a8b0c4"
     accent, warm = "#a7dfd3", "#ffb8c5"
-    scenes = [
+    scenes = [] if everyday else [
         (3, "SAI", "Your usual AI. A story that stays.", None,
          "Real Claude replies in standalone SAI chat.\nEnglish-first pilot · v0.1.1"),
         (6, "01 / A joke goes too far", "/sai act tease appearance", replies[0],
@@ -55,6 +57,9 @@ def main():
         (6, "05 / A little closer", "/sai act apologize I'm sorry for teasing your appearance", replies[3],
          f"Irritation: {replies[2]['irritation']} → {replies[3]['irritation']} · Angry → sulking\nAn apology helps. It does not erase everything at once."),
     ]
+    if everyday:
+        from render_everyday import scenes as everyday_scenes
+        scenes = everyday_scenes(record)
     frames = []
     excerpts = []
     for duration, label, command, entry, note in scenes:
@@ -78,7 +83,8 @@ def main():
                 lines = lines[:6]
                 lines[-1] = lines[-1].rstrip() + " ..."
             displayed = "\n".join(lines)
-            excerpts.append({"scene": label, "displayed_reply": displayed, "source_reply": entry["reply"]})
+            excerpts.append({"scene": label, "displayed_prompt": command, "source_prompt": entry["command"][-1],
+                             "displayed_reply": displayed, "source_reply": entry["reply"]})
             draw.text((85, y), "Ari:", font=small, fill=warm)
             y += 36
             for line in lines:
@@ -94,13 +100,14 @@ def main():
         if entry:
             for i, line in enumerate(note.splitlines()):
                 draw.text((65, 760 + i * 30), line, font=small, fill=muted)
-        draw.text((65, 850), "EDITED PLAYBACK · real reply excerpts · wait times compressed · full transcript linked", font=small, fill=muted)
+        draw.text((65, 850), "EDITED PLAYBACK · prompt/reply excerpts · waits compressed · full transcript linked", font=small, fill=muted)
         frames.append((duration, canvas))
     dist = root / "dist"
     dist.mkdir(exist_ok=True)
-    video = dist / "sai-0.1.1-showcase.mp4"
-    gif = dist / "sai-0.1.1-showcase.gif"
-    poster = dist / "sai-0.1.1-showcase-poster.png"
+    stem = f"sai-{version}-" + ("everyday" if everyday else "showcase")
+    video = dist / (stem + ".mp4")
+    gif = dist / (stem + ".gif")
+    poster = dist / (stem + "-poster.png")
     # Contact sheet is kept as a release artifact so the visual check is reproducible.
     sheet = Image.new("RGB", (1600, 1350), background)
     for i, (_, frame) in enumerate(frames):
@@ -132,7 +139,7 @@ def main():
                 "format": "Edited terminal-style playback, not a real-time screen capture", "capture": capture.name,
                 "artifacts": [{"file": p.name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest(), "bytes": p.stat().st_size}
                               for p in (video, gif, poster)], "excerpts": excerpts}
-    (root / "docs/verification/showcase-render-0.1.1.json").write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (root / "docs/verification" / f"{'everyday' if everyday else 'showcase'}-render-{version}.json").write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: evidence[k] for k in ("status", "duration_seconds", "size", "artifacts")}))
 
 

@@ -1,0 +1,32 @@
+{
+  "version": "0.1.2",
+  "python": "3.13.13",
+  "platform": "Windows",
+  "status": "PASS",
+  "checks": [
+    "wheel installed without runtime dependencies",
+    "CLI works outside source checkout",
+    "three central roles created",
+    "new process restored selected state",
+    "off persists",
+    "demo runs",
+    "generated Claude exec and Codex host-shell commands run outside checkout",
+    "UTF-8 Korean hook input preserved",
+    "cwd module and PYTHONPATH cannot shadow installed hook",
+    "interpreter path containing spaces works",
+    "installed wheel in real Claude native hooks: context and OFF observed"
+  ],
+  "wheel_sha256": "eb7554e9bed66b59477a10248ade9c8acfb549e423f40e061b2e9489e4d1177b",
+  "guided_start": {
+    "status": "PASS",
+    "scope": "installed stdin/setup/chat loop, executable fixture, no model calls",
+    "checks": [
+      "Unicode character created",
+      "OFF character resumed without replacement",
+      "memory retained",
+      "version matches wheel"
+    ]
+  },
+  "native_claude_reply": "대표님, SAI 캐릭터 이름은 하루이고, 저장된 기억은 \"하루 claude\"와 \"하루 codex\" 두 개입니다.",
+  "native_claude_off_reply": "OFF"
+}
